@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset = "UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>residents</title>
+  <style>
+		*{
+			paddding:0;
+			margin:0;
+			border:0;
+
+		}
+		td{
+      background-color: #1E1104;
+      height:4rem;
+      width : 70rem;
+      padding-top:1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      color:white;
+
+      text-align: center;
+      transition: background-color 0.2s;
+      z-index: 1;
+      opacity:1;
+
+    }
+    table{
+      margin-left : auto;
+      margin-top  :11rem ;
+      margin-right: auto;
+      z-index: 1;
+      opacity:0.8;
+    }
+    table:hover{
+      opacity:0.8;
+
+    }
+    td:hover{
+      background-color: black;
+      background-color: white;
+      color:black;
+      opacity:1;
+    }
+    input{
+      width:100%;
+      height:2rem;
+      margin-bottom:0.8rem;
+      z-index: 1;
+    }
+
+    /*body{
+      background-image: url('night9.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      background-size:cover;
+    }*/
+
+    .bg-image {
+  background-image: url("night9.jpg");
+
+
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 0;
+}
+body, html {
+  height: 100%;
+  margin: 0;
+}
+.d{
+  position:absolute;
+  top:40%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  z-index: 2;
+  text-align: center;
+}
+.button {
+  background-color: white;
+  border: none;
+  color: black;
+
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  margin : 2rem;
+
+  cursor: pointer;
+}
+.buttonresident{
+	transform: translateX(325%);
+}/*
+.final{
+	position:relative;
+}*/
+.buttonOne{
+	transform : translateX(110%);
+}
+.buttonTwo{
+	transform : translateX(365%);
+}
+
+.button:hover{
+  background-color: grey;
+  color:black;
+}
+.final{
+}
+.one{
+  position:absolute;
+  transform: translateX(-45%);
+}
+.show{
+	transform: translateX(60%);
+}
+.delete{
+	transform: translateX(118%);
+}
+
+.two{
+  position:absolute;
+  /*top:-5rem;*/
+  /*transform: translateY(-50%);*/
+  transform: translateX(+45%);
+  height:100%;
+  widht:100%;
+}
+		.white{
+			margin : 75% 0;
+		}
+		.bg{
+			width : 2560rem;
+			height : 100rem;
+			background : url("night9.jpg") ;
+			background-repeat : repeat;
+			background-attachment : fixed ;
+			background-position : center;
+			background-size : cover;
+			filter : blur(8px);
+		}
+		.bg .bgin{
+			color : white;
+			filter: blur(0);
+		}
+		div{
+			color: black;
+		}
+		.test{
+			position:absolute;
+			top:0;
+			left:0;
+			transform : translateX(12.5%);
+		}
+		.nav_bar{
+		  position: fixed;
+		  display: grid;
+		  grid-template-columns: 1fr;
+		  grid-template-rows: 1fr;
+		  grid-template-areas:
+		  "logo";
+		  background-color: #F9F9F9F9;
+			background-color: rgb(10,10,10);
+			background-color: white;
+			color : black;
+			text-align: center;
+		  z-index:20;
+			width : 100%;
+			height : 5rem;
+		}
+
+		.logo{
+		  grid-area: logo;
+		  height: 5rem;
+		  width: 5rem;
+		  justify-self: start;
+			text-align: center;
+		  margin: auto;
+			transform: translateY(7%);
+			transform: translateX(-100%);
+			font-size: 4rem;
+		}
+		body{
+		}
+	</style>
+</head>
+<body>
+	<nav class="nav_bar">
+		<div class="logo">
+		RESIDENTS
+		</div>
+	</nav>
+	<!---<div class="white"></div>--->
+	<section class="bg">
+		<div class="bgin">
+		</div>
+	</section>
+	<div class = "test">
+		<table>
+			<tr>
+				<td>
+					FlatNO
+					<br><br>
+					<input type = "text" id = "Id">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					NAME
+					<br><br>
+					<input type = "text" id = "Name">			</td>
+			</tr>
+			<tr>
+				<td>
+					RENT
+					<br><br>
+					<input type = "text" id="Contact">			</td>
+			</tr>
+			<tr>
+				<td>
+					START DATE
+					<br><br>
+					<input type = "text" id="Address">			</td>
+			</tr>
+		</table>
+
+		<button id = 'addresidentbtn' class = 'button buttonresident'>Add resident</button>
+	<br>
+	<div class="final">
+		<div class="one">
+		<button id = 'showresidentbtn' class = "button buttonOne">which Id to show</button>
+		<input type = "text" id = "showid" class="show">
+		</div>
+		<div class="two">
+			<button id = 'deleteresidentbtn' class = "button buttonTwo" >which Id to delete</button>
+			<input type = "text" id = "deleteid" class="delete">
+		</div>
+	</div>
+	</div>
+	<!---<div class="white"></div>--->
+	<script>
+
+		/*const createDBbtn = document.getElementById("createDBbtn");
+		createDBbtn.addEventListener("click",createDB);*/
+
+		const addresidentbtn = document.getElementById("addresidentbtn");
+		addresidentbtn.addEventListener("click",addresident);
+
+		const showresidentbtn = document.getElementById("showresidentbtn");
+		showresidentbtn.addEventListener("click",showresident);
+
+		const deleteresidentbtn = document.getElementById("deleteresidentbtn");
+		deleteresidentbtn.addEventListener("click",deleteresident);
+			var db = null;
+			var request = indexedDB.open("resident");
+			request.onupgradeneeded = e => {
+				alert(`upgrade is called`);
+				db = e.target.result;
+				const TL1 = db.createObjectStore("residentList",{keyPath: "ID"});
+			}
+			request.onsuccess = e => {
+				db = e.target.result;
+				alert("success");
+			}
+			request.onerror = e =>{
+				alert("error");
+			}
+		function addresident(){
+
+			var Idd = document.getElementById("Id").value;
+			var Namee = document.getElementById("Name").value;
+			var Contactt = document.getElementById("Contact").value;
+			var Addresss = document.getElementById("Address").value;
+
+			const residents = {
+				ID : Idd,
+				Name : Namee,
+				Rent : Contactt,
+				StartDate : Addresss
+			}
+			const tx = db.transaction("residentList","readwrite");
+			const TL2 = tx.objectStore("residentList");
+			TL2.add(residents);
+			alert("Data has been added");
+		}
+		function showresident(e){
+			var Idd = document.getElementById("showid").value;
+			const tx_show = db.transaction("residentList","readwrite");
+			const tl_show = tx_show.objectStore("residentList");
+			const r = tl_show.get(Idd);
+			r.onerror = function(even){
+				alert("error");
+			}
+			r.onsuccess = function(event){
+				var c = r.result;
+				if(r.result){
+					alert("Flat no : "+c.ID+" Name : "+c.Name+" Rent : "+c.Rent+" StartDate : "+c.StartDate);
+				}
+				else{
+					alert("No such data found");
+				}
+			}
+			/*
+			var tc_show = tl_show.openCursor(null,"prev");
+			var c = e.target.result;
+			if(c){
+				alert("ID : "+c.key+" Name : "+c.value.Name+" Contact : "+c.value.Contact+" Address : "+c.value.Address);
+				c.continue();
+			}*/
+		}
+		function deleteresident(){
+			var Idd = document.getElementById("deleteid").value;
+			/*const tx_show = db.transaction("residentList","readwrite");
+			const tl_show = tx_show.objectStore("residentList");
+			const r = tl_show.get(Idd);*/
+			var r = db.transaction("residentList","readwrite").objectStore("residentList").delete(Idd);
+			r.onsuccess = function(event){
+				alert("data has been removed");
+			}
+			r.onerror = function(event){
+				alert("We could not find data");
+			}
+		}
+	</script>
+</body>
+</html>
